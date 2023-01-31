@@ -19,9 +19,10 @@ import java.util.logging.Logger;
 
 public class EmployeeService {
 
-    String EMPLOYEE_CSV_LOC = "C:\\tutorial\\async-read-write-opration\\src\\main\\resources\\employee.csv";
-    String DEPT_CSV_LOC = "C:\\tutorial\\async-read-write-opration\\src\\main\\resources\\department.csv";
-    String MERGE_CSV_LOC = "C:\\tutorial\\async-read-write-opration\\src\\main\\resources\\EmployeeDepartmentMergeFile.csv";
+
+    String DEPT_CSV_LOC = "src/main/resources/department.csv";
+    String EMPLOYEE_CSV_LOC = "src/main/resources/employee.csv";
+    String MERGE_CSV_LOC = "src/main/resources/EmployeeDepartmentMergeFile.csv";
     private static final String CSV_SEPARATOR = ",";
     Logger logger = Logger.getLogger("EmployeeService.class");
 
@@ -45,6 +46,7 @@ public class EmployeeService {
                 return deptlist;
 
             } catch (IOException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         }, executor).thenApplyAsync((departments) -> {
@@ -65,6 +67,7 @@ public class EmployeeService {
                 }
 
             } catch (IOException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
             long employeeProcessingExecutionTime =  System.currentTimeMillis()-employeeProcessingStartTime;

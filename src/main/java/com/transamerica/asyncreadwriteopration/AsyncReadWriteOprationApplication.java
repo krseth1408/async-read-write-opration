@@ -20,9 +20,5 @@ public class AsyncReadWriteOprationApplication {
 
 		System.out.println(completableFuture);
 
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		URL url = loader.getResource("departments.csv");
-
-		System.out.println(url);
 	}
 }
